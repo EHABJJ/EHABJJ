@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page UI Preview - Jhompay Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .phone-frame {
+            width: 375px;
+            height: 667px;
+            background: #F0E8E4;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 12px;
+        }
+
+        /* AppBar with Glass Effect */
+        .app-bar {
+            background: linear-gradient(135deg, 
+                rgba(79, 93, 117, 0.7) 0%, 
+                rgba(107, 122, 148, 0.7) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 12px;
+        }
+
+        .icon-button {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .company-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .company-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .company-name {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: #F4E4C1;
+            letter-spacing: 1.3px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Balance Section */
+        .balance-section {
+            background: white;
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .balance-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .balance-card:first-child {
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .currency-dropdown {
+            background: linear-gradient(135deg, 
+                rgba(79, 93, 117, 0.7) 0%, 
+                rgba(107, 122, 148, 0.7) 100%);
+            border-radius: 20px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .balance-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a1a1a;
+            text-align: center;
+        }
+
+        /* Transaction Options Card */
+        .transaction-card {
+            background: white;
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            margin-bottom: 16px;
+        }
+
+        /* Centered Title Box - Same as AppBar */
+        .title-box {
+            background: linear-gradient(135deg, 
+                rgba(79, 93, 117, 0.7) 0%, 
+                rgba(107, 122, 148, 0.7) 100%);
+            padding: 10px 24px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 14px;
+        }
+
+        .title-box-wrapper {
+            text-align: center;
+        }
+
+        .title-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+
+        /* Transaction Buttons */
+        .transaction-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 12px;
+        }
+
+        .transaction-button {
+            height: 48px;
+            border-radius: 25px;
+            border: none;
+            font-size: 17px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+            padding: 12px 16px;
+        }
+
+        .transaction-button:active {
+            transform: scale(0.98);
+        }
+
+        .cash-in-button {
+            background: #4CAF50;
+        }
+
+        .cash-out-button {
+            background: #E53935;
+        }
+
+        /* Send Payment Button */
+        .send-payment-button {
+            width: 100%;
+            height: 48px;
+            background: #1976D2;
+            border-radius: 25px;
+            border: none;
+            font-size: 19px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .send-payment-button:active {
+            transform: scale(0.98);
+        }
+
+        .info-banner {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 2px solid #e0e0e0;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="screen">
+            <!-- AppBar with Glass Effect -->
+            <div class="app-bar">
+                <div class="icon-button">⚙️</div>
+                <div class="company-section">
+                    <div class="company-icon">🏛️</div>
+                    <div class="company-name">Jhompay Tracker</div>
+                </div>
+                <div class="icon-button">🕐</div>
+            </div>
+
+            <!-- Balance Section -->
+            <div class="balance-section">
+                <div class="balance-card">
+                    <div class="currency-dropdown">PHP ▼</div>
+                    <div class="balance-amount">12,345.00</div>
+                </div>
+                <div class="balance-card">
+                    <div class="currency-dropdown">JOD ▼</div>
+                    <div class="balance-amount">5,678.00</div>
+                </div>
+            </div>
+
+            <!-- Cash In Card -->
+            <div class="transaction-card">
+                <div class="title-box-wrapper">
+                    <div class="title-box">
+                        <div class="title-text">Cash In</div>
+                    </div>
+                </div>
+                <div class="transaction-buttons">
+                    <button class="transaction-button cash-in-button">Online</button>
+                    <button class="transaction-button cash-in-button">Bank</button>
+                    <button class="transaction-button cash-in-button">Cash</button>
+                    <button class="transaction-button cash-in-button">Other</button>
+                </div>
+            </div>
+
+            <!-- Cash Out Card -->
+            <div class="transaction-card">
+                <div class="title-box-wrapper">
+                    <div class="title-box">
+                        <div class="title-text">Cash Out</div>
+                    </div>
+                </div>
+                <div class="transaction-buttons">
+                    <button class="transaction-button cash-out-button">Expenses</button>
+                    <button class="transaction-button cash-out-button">Salary</button>
+                    <button class="transaction-button cash-out-button">Bills</button>
+                    <button class="transaction-button cash-out-button">Other</button>
+                </div>
+            </div>
+
+            <!-- Send Payment Button -->
+            <button class="send-payment-button">Send Payment</button>
+        </div>
+        
+        <div class="info-banner">
+            UI Preview - Modernized Design with Glass Effect
+        </div>
+    </div>
+</body>
+</html>
