@@ -7,7 +7,7 @@ import 'settings_page.dart';
 import 'transaction_history_page.dart';
 import 'add_transaction_page.dart';
 
-const Color _kBackgroundColor = Color(0xFFFAFAFA);
+const Color _kBackgroundColor = Color(0xFFF0E8E4);
 
 class HomePageUI extends StatefulWidget {
   final String tenantId;
@@ -520,7 +520,7 @@ class _HomePageUIState extends State<HomePageUI> {
           text,
           style: const TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 15,
+            fontSize: 17,
           ),
           overflow: TextOverflow.ellipsis,
         ),
@@ -545,7 +545,7 @@ class _HomePageUIState extends State<HomePageUI> {
           'Send Payment',
           style: TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 17,
+            fontSize: 19,
           ),
         ),
       ),
