@@ -7,7 +7,7 @@ import 'settings_page.dart';
 import 'transaction_history_page.dart';
 import 'add_transaction_page.dart';
 
-const Color _kBackgroundColor = Color(0xFFF5F5F5);
+const Color _kBackgroundColor = Color(0xFFFAFAFA);
 
 class HomePageUI extends StatefulWidget {
   final String tenantId;
@@ -170,18 +170,18 @@ class _HomePageUIState extends State<HomePageUI> {
                 onRefresh: _fetchData,
                 child: SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       _buildHeader(),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 12),
                       _buildBalanceSection(),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 16),
                       _buildTransactionOptionsCard(isCashIn: true),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 16),
                       _buildTransactionOptionsCard(isCashIn: false),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 16),
                       _buildSendPaymentButton(),
                     ],
                   ),
@@ -193,7 +193,7 @@ class _HomePageUIState extends State<HomePageUI> {
 
   Widget _buildHeader() {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -331,10 +331,11 @@ class _HomePageUIState extends State<HomePageUI> {
 
   Widget _buildBalanceCard(String currency, double balance, bool isFirst) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
             color: Colors.grey.shade100,
             borderRadius: BorderRadius.circular(20),
@@ -344,6 +345,7 @@ class _HomePageUIState extends State<HomePageUI> {
               value: currency,
               icon: const Icon(Icons.arrow_drop_down, size: 20, color: Colors.grey),
               isDense: true,
+              isExpanded: true,
               style: const TextStyle(
                 fontSize: 14,
                 color: Colors.grey,
@@ -371,6 +373,7 @@ class _HomePageUIState extends State<HomePageUI> {
             fontWeight: FontWeight.bold,
             color: Colors.black87,
           ),
+          textAlign: TextAlign.center,
         ),
       ],
     );
@@ -381,7 +384,7 @@ class _HomePageUIState extends State<HomePageUI> {
     final List<String> options = isCashIn ? _cashInOptions : _cashOutOptions;
     
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -399,7 +402,7 @@ class _HomePageUIState extends State<HomePageUI> {
         children: [
           Center(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -421,7 +424,7 @@ class _HomePageUIState extends State<HomePageUI> {
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 15,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                   letterSpacing: 0.5,
@@ -429,7 +432,7 @@ class _HomePageUIState extends State<HomePageUI> {
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           _buildTransactionButtons(options: options, isCashIn: isCashIn),
         ],
       ),
@@ -470,7 +473,7 @@ class _HomePageUIState extends State<HomePageUI> {
       );
 
       if (i + 1 < options.length) {
-        rowChildren.add(const SizedBox(width: 16));
+        rowChildren.add(const SizedBox(width: 12));
         rowChildren.add(
           Expanded(
             child: _buildActionButton(
@@ -481,13 +484,13 @@ class _HomePageUIState extends State<HomePageUI> {
           ),
         );
       } else {
-        rowChildren.add(const SizedBox(width: 16));
+        rowChildren.add(const SizedBox(width: 12));
         rowChildren.add(const Expanded(child: SizedBox()));
       }
 
       rows.add(Row(children: rowChildren));
       if (i + 2 < options.length) {
-        rows.add(const SizedBox(height: 12));
+        rows.add(const SizedBox(height: 10));
       }
     }
 
@@ -500,7 +503,7 @@ class _HomePageUIState extends State<HomePageUI> {
     required Color color,
   }) {
     return SizedBox(
-      height: 48,
+      height: 42,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -515,7 +518,7 @@ class _HomePageUIState extends State<HomePageUI> {
           text,
           style: const TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 16,
+            fontSize: 15,
           ),
           overflow: TextOverflow.ellipsis,
         ),
@@ -525,7 +528,7 @@ class _HomePageUIState extends State<HomePageUI> {
 
   Widget _buildSendPaymentButton() {
     return SizedBox(
-      height: 52,
+      height: 48,
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
@@ -540,7 +543,7 @@ class _HomePageUIState extends State<HomePageUI> {
           'Send Payment',
           style: TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 18,
+            fontSize: 17,
           ),
         ),
       ),
