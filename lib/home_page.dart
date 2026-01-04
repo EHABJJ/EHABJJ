@@ -337,19 +337,27 @@ class _HomePageUIState extends State<HomePageUI> {
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
-            color: Colors.grey.shade100,
+            gradient: LinearGradient(
+              colors: [
+                const Color(0xFF4F5D75).withOpacity(0.7),
+                const Color(0xFF6B7A94).withOpacity(0.7),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
             borderRadius: BorderRadius.circular(20),
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               value: currency,
-              icon: const Icon(Icons.arrow_drop_down, size: 20, color: Colors.grey),
+              icon: const Icon(Icons.arrow_drop_down, size: 20, color: Colors.white),
               isDense: true,
               isExpanded: true,
               alignment: Alignment.center,
+              dropdownColor: const Color(0xFF4F5D75),
               style: const TextStyle(
                 fontSize: 14,
-                color: Colors.grey,
+                color: Colors.white,
                 fontWeight: FontWeight.w500,
               ),
               items: _availableCurrencies.map((String value) {
