@@ -386,7 +386,7 @@ class _HomePageUIState extends State<HomePageUI> {
     final List<String> options = isCashIn ? _cashInOptions : _cashOutOptions;
     
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -404,7 +404,7 @@ class _HomePageUIState extends State<HomePageUI> {
         children: [
           Center(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -426,7 +426,7 @@ class _HomePageUIState extends State<HomePageUI> {
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 15,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                   letterSpacing: 0.5,
@@ -434,7 +434,7 @@ class _HomePageUIState extends State<HomePageUI> {
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 14),
           _buildTransactionButtons(options: options, isCashIn: isCashIn),
         ],
       ),
@@ -492,7 +492,7 @@ class _HomePageUIState extends State<HomePageUI> {
 
       rows.add(Row(children: rowChildren));
       if (i + 2 < options.length) {
-        rows.add(const SizedBox(height: 10));
+        rows.add(const SizedBox(height: 12));
       }
     }
 
@@ -505,7 +505,7 @@ class _HomePageUIState extends State<HomePageUI> {
     required Color color,
   }) {
     return SizedBox(
-      height: 42,
+      height: 48,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -515,6 +515,7 @@ class _HomePageUIState extends State<HomePageUI> {
             borderRadius: BorderRadius.circular(25),
           ),
           elevation: 0,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         ),
         child: Text(
           text,
@@ -523,6 +524,7 @@ class _HomePageUIState extends State<HomePageUI> {
             fontSize: 17,
           ),
           overflow: TextOverflow.ellipsis,
+          maxLines: 1,
         ),
       ),
     );
