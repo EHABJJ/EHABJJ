@@ -346,6 +346,7 @@ class _HomePageUIState extends State<HomePageUI> {
               icon: const Icon(Icons.arrow_drop_down, size: 20, color: Colors.grey),
               isDense: true,
               isExpanded: true,
+              alignment: Alignment.center,
               style: const TextStyle(
                 fontSize: 14,
                 color: Colors.grey,
@@ -354,6 +355,7 @@ class _HomePageUIState extends State<HomePageUI> {
               items: _availableCurrencies.map((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
+                  alignment: Alignment.center,
                   child: Text(value),
                 );
               }).toList(),
